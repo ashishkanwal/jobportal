@@ -2,6 +2,7 @@ import { PopoverContent, PopoverTrigger, Popover } from '@radix-ui/react-popover
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/button'
+import './navbar.css'
 import {
     Avatar,
     AvatarImage,
@@ -14,16 +15,16 @@ function Navbar() {
         <div className='bg-white'>
             <div className='flex items-center justify-between mx-auto max-w-5xl h-16'>
                 <div>
-                    <h1 className='text-2xl font-bold'>job<span className='text-[#f83002]'>portal</span></h1>
+                    <h1 className='text-2xl font-bold'>Talent<span className='text-[#f83002]'>Link</span></h1>
                 </div>
                 <div className='flex items-center gap-10'>
-                    <ul className='flex font-medium items-center gap-5 cursor-pointer' >
+                    <ul className='lists relative  font-medium items-center gap-5 cursor-pointer lg:flex hidden' >
                         {/* <li><Link>Home</Link></li>
                     <li><Link>Jobs</Link></li>
                     <li><Link>Browse</Link></li> */}
-                        <li>Home</li>
-                        <li>Jobs</li>
-                        <li>Browse</li>
+                        <li className='item relative'>Home</li>
+                        <li className='item relative'>Jobs</li>
+                        <li className='item relative'>Browse</li>
                     </ul>
                     <Popover>
                         <PopoverTrigger asChild>
@@ -42,7 +43,7 @@ function Navbar() {
                                 <div>
 
                                     <h4 className='font-medium'>Ashish Kanwal</h4>
-                                    <p className='text-sm text-muted-foreground'>Lorem, ipsum dolor.</p>
+                                    <p className='text-sm text-muted-foreground'>Junior Scientist at ISRO.</p>
                                 </div>
                             </div>
                             <div className='flex flex-col my-2  text-gray-600'>
