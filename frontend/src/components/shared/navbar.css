@@ -1,0 +1,16 @@
+
+
+.item::after {
+    position: absolute; 
+    content: '';
+    width: 0;
+    height: 2px;
+    bottom: 0px;
+    left: 0; 
+    background-color: red;
+}
+
+.item:hover::after{
+    width: 42px;
+    transition: 1s ease;
+}
