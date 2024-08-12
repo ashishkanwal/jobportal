@@ -4,8 +4,10 @@ import { Label } from '@radix-ui/react-label'
 import { Input } from '../ui/input'
 import { RadioGroup } from '../ui/radio-group'
 import { Button } from '../ui/button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { toast } from 'sonner'
+import axios from 'axios'
 
 function Signup() {
     const [input, setInput] = useState({
@@ -16,6 +18,7 @@ function Signup() {
         role: "",
         file: ""
     })
+    const navigate = useNavigate();
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
     }
@@ -24,15 +27,41 @@ function Signup() {
     }
     const submitHandler=async(e)=>{
         e.preventDefault();
-        console.log(input);
-        setInput({
-            fullname: "",
-            email: "",
-            phoneNumber: "",
-            password: "",
-            role: "",
-            file: ""
-        })
+        const formData = new FormData();
+        
+        formData.append("fullname",input.fullname)
+        formData.append("email",input.email)
+        formData.append("phoneNumber",input.phoneNumber)
+        formData.append("password",input.password)
+        formData.append("role",input.role)
+        if(input.file){
+            formData.append("file",input.file)
+        }
+       try {
+            const res=await axios.post(`http://localhost:8000/api/v1/user/register`,formData,{
+                headers:{
+                    "Content-Type":"multipart/form-data"
+                },
+                withCredentials:true ,
+                
+            })
+            if(res.data.success){
+                navigate("/login");
+                toast.success(res.data.message);
+                setInput({
+                    fullname: "",
+                    email: "",
+                    phoneNumber: "",
+                    password: "",
+                    role: "",
+                    file: ""
+                })
+            }
+       } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message);
+        
+       }
 
     }
     return (
@@ -88,11 +117,11 @@ function Signup() {
                                 <Input
                                     type="radio"
                                     name="role"
-                                    value="applicant"
-                                    checked={input.role === 'applicant'}
+                                    value="student"
+                                    checked={input.role === 'student'}
                                     onChange={changeEventHandler}
                                     className='cursor-pointer' />
-                                <Label htmlFor='r1'>Applicant</Label>
+                                <Label htmlFor='r1'>Student</Label>
                             </div>
                             <div className='flex items-center space-x-2'>
                                 <Input

@@ -4,7 +4,9 @@ import { Label } from '@radix-ui/react-label'
 import { Input } from '../ui/input'
 import { RadioGroup } from '../ui/radio-group'
 import { Button } from '../ui/button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
+import axios from 'axios'
 
 function Login() {
     const [input, setInput] = useState({
@@ -15,22 +17,39 @@ function Login() {
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
     }
-    
+    const navigate = useNavigate();
     const submitHandler=async(e)=>{
         e.preventDefault();
-        console.log(input);
-        setInput({
-            email: "",
-            password: "",
-            role: "",
-        })
+        const formData = new FormData();
+        
+        formData.append("email",input.email)
+
+        formData.append("password",input.password)
+        formData.append("role",input.role)
+   
+       try {
+            const res=await axios.post(`http://localhost:8000/api/v1/user/login`,formData,{
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                withCredentials:true ,
+                
+            })
+            if(res.data.success){
+                navigate("/");
+                toast.success(res.data.message);
+            }
+       } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message);
+       }
 
     }
   return (
     <div>
         <Navbar/>
         <div className='flex items-center justify-center max-w-7xl mx-auto'>
-            <form className='w-1/2 border border-gray-200 rounded-md p-4 my-10' action="">
+            <form className='w-1/2 border border-gray-200 rounded-md p-4 my-10' onSubmit={submitHandler}>
                 <h1 className='font-bold text-xl mb-5'>Login</h1>
                 <div className='my-2'>
                     <Label >Email</Label>
@@ -58,11 +77,11 @@ function Login() {
                             <Input 
                             type="radio"
                             name="role"
-                            value="applicant"
-                            checked={input.role==='applicant'}
+                            value="student"
+                            checked={input.role==='student'}
                             onChange={changeEventHandler}
                             className='cursor-pointer'/>
-                            <Label htmlFor='r1'>Applicant</Label>
+                            <Label htmlFor='r1'>Student</Label>
                         </div>
                         <div className='flex items-center space-x-2'>
                         <Input 
