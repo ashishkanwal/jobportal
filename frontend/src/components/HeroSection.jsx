@@ -4,9 +4,9 @@ import { Search } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <div className="text-center ">
+    <div className="text-center bg-gray-100">
       <div className="flex flex-col gap-5 my-10">
-        <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#F83002] font-medium">
+        <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-pink-500 font-medium">
           Leading the Way in Job Search Excellence
         </span>
         <h1 className="text-5xl font-bold ">
