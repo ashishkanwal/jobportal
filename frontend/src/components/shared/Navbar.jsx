@@ -17,19 +17,19 @@ function Navbar() {
         <div className='bg-white'>
             <div className='flex items-center justify-between mx-auto max-w-5xl h-16'>
                 <div>
-                    <h1 className='text-2xl font-bold cursor-pointer'>Talent<span className='text-[#f83002]'>Link</span></h1>
+                    <h1 className='text-2xl font-bold cursor-pointer'>Jobs<span className='text-[#f83002]'>Seek</span></h1>
                 </div>
                 <div className='flex items-center gap-12'>
                     <ul className='lists relative  font-medium items-center gap-5 cursor-pointer lg:flex hidden' >
-                        <li className='item relative'><Link to="/">Home</Link></li>
-                        <li className='item relative'><Link to="/jobs">Jobs</Link></li>
-                        <li className='item relative'><Link to="/browse">Browse</Link></li>
+                        <li className='item relative text-gray-500 hover:text-gray-800'><Link to="/">Home</Link></li>
+                        <li className='item relative text-gray-500 hover:text-gray-800'><Link to="/jobs">Jobs</Link></li>
+                        <li className='item relative text-gray-500 hover:text-gray-800'><Link to="/browse">Browse</Link></li>
                     </ul>
                     
                             <div className='flex gap-3'>
                                 {!user?(<div className='flex items-center gap-2'>
-                                <Link to="/login"><Button variant="outline">Login</Button></Link>
-                                <Link to="/signup"><Button  className='bg-[#6A38C2] hover:bg-[#5b30a6]'>Signup</Button></Link>
+                                <Link to="/login"><Button variant="outline"className='bg-zinc-800 text-white'>Login</Button></Link>
+                                <Link to="/signup"><Button  className='bg-blue-500 hover:bg-blue-700'>Signup</Button></Link>
                                 </div>):(
                                 <Popover>
                                     <PopoverTrigger asChild>
