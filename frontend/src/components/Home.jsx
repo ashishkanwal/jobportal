@@ -1,12 +1,16 @@
-import React from 'react'
-import Navbar from './shared/Navbar'
+import React from "react";
+import Navbar from "./shared/Navbar";
+import HeroSection from "./HeroSection";
+import CategoryCarousel from "./CategoryCarousel";
 
 function Home() {
   return (
     <div>
-        <Navbar/>
+      <Navbar />
+      <HeroSection />
+      <CategoryCarousel/>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
