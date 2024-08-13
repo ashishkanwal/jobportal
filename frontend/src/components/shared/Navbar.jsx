@@ -17,7 +17,7 @@ function Navbar() {
         <div className='bg-white'>
             <div className='flex items-center justify-between mx-auto max-w-5xl h-16'>
                 <div>
-                    <h1 className='text-2xl font-bold cursor-pointer'>Jobs<span className='text-[#f83002]'>Seek</span></h1>
+                    <h1 className='text-2xl font-bold cursor-pointer'>Jobs<span className='text-blue-500'>Seek</span></h1>
                 </div>
                 <div className='flex items-center gap-12'>
                     <ul className='lists relative  font-medium items-center gap-5 cursor-pointer lg:flex hidden' >
