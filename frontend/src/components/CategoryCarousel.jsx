@@ -33,7 +33,7 @@ const CategoryCarousel = () => {
           {
             category.map((cat, index) => (
               <CarouselItem key={index} className="w-52"> {/* Ensure each item takes up 1/3 of the container */}
-                <Button variant="outline" className="w-52 h-full">{cat}</Button>
+                <Button variant="outline" className="w-52 h-full bg-black text-white">{cat}</Button>
               </CarouselItem>
             ))
           }
