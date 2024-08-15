@@ -10,11 +10,11 @@ const TopCompanies = () => {
         <h1 className='text-4xl font-bold'><span className='text-blue-500'>Top companies</span> Hiring Now</h1>
         </div>
         <div>
-      <Carousel className="w-5/6 max-w-6xl mx-auto my-20"> {/* Adjust the width as needed */}
-        <CarouselContent className="flex gap-2  h-40 ml-1"> {/* Adjust gap if needed */}
+      <Carousel className="w-5/6 max-w-6xl mx-auto my-20"> 
+        <CarouselContent className="flex gap-2  h-40 ml-1"> 
           {
             company.map((cat, index) => (
-              <CarouselItem key={index} className="w-56 border-2 rounded-md px-0"> {/* Ensure each item takes up 1/3 of the container */}
+              <CarouselItem key={index} className="w-56 border-2 rounded-md px-0"> 
                 <div className='w-full h-full py-2 flex flex-col gap-4 px-2'>
                  <div>
                  <div className='job-types flex gap-2 items-center'>

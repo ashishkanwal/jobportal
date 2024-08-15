@@ -11,6 +11,7 @@ import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
+import Footer from "../Footer";
 
 function Signup() {
   const [input, setInput] = useState({
@@ -76,9 +77,9 @@ function Signup() {
   return (
     <div>
       <Navbar />
-      <div className="flex items-center justify-center max-w-7xl mx-auto">
+      <div className="flex sm:items-center sm:justify-center max-w-7xl mx-auto">
         <form
-          className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
+          className="w-full sm:w-1/2 border border-gray-200 rounded-md p-4 my-10"
           onSubmit={submitHandler}
         >
           <h1 className="font-bold text-xl mb-5">Sign Up</h1>
@@ -175,6 +176,7 @@ function Signup() {
           </span>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 }

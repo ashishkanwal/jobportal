@@ -3,29 +3,29 @@ import './footer.css'
 
 const Footer = () => {
     return (
-        <div className='bg-white w-full'>
-            <div className='max-w-5xl mx-auto my-20 bg-white h-52 flex gap-2 py-2'>
-                <div className=' w-80 text-3xl font-semibold flex flex-col gap-5'>
+        <div className='bg-white w-full max-w-7xl'>
+            <div className='max-w-5xl mx-auto my-20 bg-white min-h-52 lg:h-52 flex gap-2 py-2 flex-col lg:flex-row'>
+                <div className=' w-80 text-3xl font-semibold flex flex-col gap-5 items-center lg:items-start'>
                     <div>
                         <span >Job</span><span className='text-blue-500'>Seek</span>
                     </div>
                     <div>
                         <h5 className='text-sm text-gray-500'>Connect with us</h5>
                         <div className='w-[240px]'>
-                            <ul class="example-2">
-                                <li class="icon-content">
+                            <ul className="example-2">
+                                <li className="icon-content">
                                     <a
                                         href="https://linkedin.com/"
                                         aria-label="LinkedIn"
                                         data-social="linkedin"
                                     >
-                                        <div class="filled"></div>
+                                        <div className="filled"></div>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
                                             height="16"
                                             fill="currentColor"
-                                            class="bi bi-linkedin"
+                                            className="bi bi-linkedin"
                                             viewBox="0 0 16 16"
                                             xml:space="preserve"
                                         >
@@ -35,17 +35,17 @@ const Footer = () => {
                                             ></path>
                                         </svg>
                                     </a>
-                                    <div class="tooltip">LinkedIn</div>
+                                    <div className="tooltip">LinkedIn</div>
                                 </li>
-                                <li class="icon-content">
+                                <li className="icon-content">
                                     <a href="https://www.github.com/" aria-label="GitHub" data-social="github">
-                                        <div class="filled"></div>
+                                        <div className="filled"></div>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
                                             height="16"
                                             fill="currentColor"
-                                            class="bi bi-github"
+                                            className="bi bi-github"
                                             viewBox="0 0 16 16"
                                             xml:space="preserve"
                                         >
@@ -55,21 +55,21 @@ const Footer = () => {
                                             ></path>
                                         </svg>
                                     </a>
-                                    <div class="tooltip">GitHub</div>
+                                    <div className="tooltip">GitHub</div>
                                 </li>
-                                <li class="icon-content">
+                                <li className="icon-content">
                                     <a
                                         href="https://www.instagram.com/"
                                         aria-label="Instagram"
                                         data-social="instagram"
                                     >
-                                        <div class="filled"></div>
+                                        <div className="filled"></div>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
                                             height="16"
                                             fill="currentColor"
-                                            class="bi bi-instagram"
+                                            className="bi bi-instagram"
                                             viewBox="0 0 16 16"
                                             xml:space="preserve"
                                         >
@@ -79,17 +79,17 @@ const Footer = () => {
                                             ></path>
                                         </svg>
                                     </a>
-                                    <div class="tooltip">Instagram</div>
+                                    <div className="tooltip">Instagram</div>
                                 </li>
-                                <li class="icon-content">
+                                <li className="icon-content">
                                     <a href="https://youtube.com/" aria-label="Youtube" data-social="youtube">
-                                        <div class="filled"></div>
+                                        <div className="filled"></div>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
                                             height="16"
                                             fill="currentColor"
-                                            class="bi bi-youtube"
+                                            className="bi bi-youtube"
                                             viewBox="0 0 16 16"
                                             xml:space="preserve"
                                         >
@@ -99,28 +99,28 @@ const Footer = () => {
                                             ></path>
                                         </svg>
                                     </a>
-                                    <div class="tooltip">Youtube</div>
+                                    <div className="tooltip">Youtube</div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div className='w-full flex gap-2 py-2 px-20'>
-                    <div className=' w-full flex flex-col gap-2 '>
+                <div className='w-full  lg:flex lg:flex-row  gap-2  lg:px-20 '>
+                    <div className=' w-full flex flex-col gap-2 text-center'>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>About us</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Careers</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Employer home</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Sitemap</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Credits</h4>
                     </div>
-                    <div className=' w-full flex flex-col gap-2'>
+                    <div className=' w-full flex flex-col gap-2 text-center'>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Help center</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Summons/Notices</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Gruevances</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Report issue</h4>
 
                     </div>
-                    <div className=' w-full flex flex-col gap-2'>
+                    <div className=' w-full flex flex-col gap-2 text-center'>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Privacy Policy</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Terms&Condtions</h4>
                         <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Fraud Alert</h4>
