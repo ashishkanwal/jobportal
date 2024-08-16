@@ -19,9 +19,9 @@ function Navbar() {
       <div className="bg-gray-200">
         <div className="flex items-center justify-between mx-auto max-w-6xl h-16">
           <div className="flex gap-5 h-full items-center">
-            <h1 className="text-2xl font-bold cursor-pointer">
+            <Link to="/" className="text-2xl font-bold cursor-pointer">
               Jobs<span className="text-blue-500">Seek</span>
-            </h1>
+            </Link>
             <div className="hidden sm:block">
               <span className="loader cursor-pointer"></span>
             </div>

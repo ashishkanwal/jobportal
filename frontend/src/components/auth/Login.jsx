@@ -58,8 +58,16 @@ function Login() {
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
+      setInput({email: "",
+        password: "",
+        role: ""
+      })
     } finally {
       dispatch(setLoading(false));
+      setInput({email: "",
+        password: "",
+        role: ""
+      })
     }
   };
   return (
