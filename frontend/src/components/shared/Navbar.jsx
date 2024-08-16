@@ -10,9 +10,10 @@ import "./navbar.css";
 import { IoSunnyOutline } from "react-icons/io5";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { LogOut, User2 } from "lucide-react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-  const user = false;
+  const {user}=useSelector(store=>store.auth);
   return (
     <>
       <div className="bg-gray-200">
@@ -74,7 +75,7 @@ function Navbar() {
                         />
                       </Avatar>
                       <div>
-                        <h4 className="font-medium">Ashish Kanwal</h4>
+                        <h4 className="font-medium">{user.fullname}</h4>
                         <p className="text-sm text-muted-foreground">
                           Junior Scientist at ISRO.
                         </p>

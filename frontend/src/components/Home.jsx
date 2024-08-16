@@ -7,21 +7,30 @@ import TopCompanies from "./TopCompanies";
 import Footer from "./Footer";
 import './home.css';
 import { FaAnglesUp } from "react-icons/fa6";
+
 function Home() {
-  const [loader, setLoader] = useState(true);
+  // const [loader, setLoader] = useState(true);
+  const loader=false;
+  // useEffect(() => {
+  //   const hasLoaded = sessionStorage.getItem("hasLoaded");
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  //   if (!hasLoaded) {
+  //     document.body.style.overflow = "hidden";
+  //     const timer = setTimeout(() => {
+  //       setLoader(false);
+  //       document.body.style.overflow = "auto";
+  //       sessionStorage.setItem("hasLoaded", "true");
+  //     }, 1000);
 
-    const timer = setTimeout(() => {
-      setLoader(false);
-      document.body.style.overflow = "auto";
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  //     return () => {
+  //       clearTimeout(timer);
+  //       document.body.style.overflow = "auto";
+  //     };
+  //   } else {
+  //     setLoader(false);
+  //   }
+  // }, []);
+
   const scrollToHero = () => {
     const heroElement = document.getElementById("navbar");
     if (heroElement) {
@@ -46,16 +55,16 @@ function Home() {
       ) : (
         <div className="relative bg-gray-100">
           <div id="navbar">
-            <Navbar/>
+            <Navbar />
           </div>
           <div id="hero">
-          <HeroSection />
+            <HeroSection />
           </div>
           <CategoryCarousel />
           <TopCompanies />
           <LatestJobs />
           <div onClick={scrollToHero} className="fixed cursor-pointer bottom-5 right-5 p-3 bg-blue-500 text-white rounded-full">
-          <FaAnglesUp />
+            <FaAnglesUp />
           </div>
           <Footer />
         </div>

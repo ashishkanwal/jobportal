@@ -9,7 +9,8 @@ import { toast } from "sonner";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
-import { Loader, Loader2 } from "lucide-react";
+import { setUser } from "@/redux/authSlice"; 
+import { Loader2 } from "lucide-react";
 import Footer from "../Footer";
 
 function Login() {
@@ -46,8 +47,13 @@ function Login() {
         }
       );
       if (res.data.success) {
+        dispatch(setUser(res.data.user))
         navigate("/");
         toast.success(res.data.message);
+        setInput({email: "",
+          password: "",
+          role: ""
+        })
       }
     } catch (error) {
       console.log(error);
