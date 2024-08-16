@@ -6,7 +6,7 @@ import LatestJobs from "./LatestJobs";
 import TopCompanies from "./TopCompanies";
 import Footer from "./Footer";
 import './home.css';
-
+import { FaAnglesUp } from "react-icons/fa6";
 function Home() {
   const [loader, setLoader] = useState(true);
 
@@ -22,6 +22,12 @@ function Home() {
       document.body.style.overflow = "auto";
     };
   }, []);
+  const scrollToHero = () => {
+    const heroElement = document.getElementById("navbar");
+    if (heroElement) {
+      heroElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -39,11 +45,18 @@ function Home() {
         </div>
       ) : (
         <div className="relative bg-gray-100">
-          <Navbar />
+          <div id="navbar">
+            <Navbar/>
+          </div>
+          <div id="hero">
           <HeroSection />
+          </div>
           <CategoryCarousel />
           <TopCompanies />
           <LatestJobs />
+          <div onClick={scrollToHero} className="fixed cursor-pointer bottom-5 right-5 p-3 bg-blue-500 text-white rounded-full">
+          <FaAnglesUp />
+          </div>
           <Footer />
         </div>
       )}

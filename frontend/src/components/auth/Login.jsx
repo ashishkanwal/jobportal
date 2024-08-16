@@ -117,7 +117,7 @@ function Login() {
               Please wait
             </Button>
           ) : (
-            <Button type="submit" className="w-full bg-[#6A38C2] my-4">
+            <Button type="submit" className="w-full bg-blue-500 my-4">
               Login
             </Button>
           )}

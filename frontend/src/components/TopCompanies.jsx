@@ -5,7 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 const company=["Google","Microsoft","Amazon","Flipkart"]
 const TopCompanies = () => {
   return (
-    <div className='max-w-5xl mx-auto my-20'>
+    <div className='max-w-6xl mx-auto my-20'>
         <div className='flex justify-center'>
         <h1 className='text-4xl font-bold'><span className='text-blue-500'>Top companies</span> Hiring Now</h1>
         </div>
