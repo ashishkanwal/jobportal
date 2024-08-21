@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './shared/Navbar'
 import { Avatar, AvatarImage } from './ui/avatar'
 import { Contact, Mail, Pen } from 'lucide-react'
@@ -8,10 +8,13 @@ import { Label } from './ui/label'
 import AppliedJobTable from './AppliedJobTable'
 import Footer from './Footer'
 import { useSelector } from 'react-redux'
+import UpdateProfileDialog from './updateProfileDialog'
 
 const skills=["HTML","CSS","JavaScript","React"]
+const isResume=true;
+
 const Profile = () => {
-  const isResume=true;
+  const [open,setOpen]=useState(false)
   const {user}=useSelector(store=>store.auth);
   return (
     <div className='bg-gray-100'>
@@ -27,7 +30,7 @@ const Profile = () => {
               <p className='text-sm text-gray-500'>FullStack Web Developer</p>
             </div>
           </div>
-          <Button className='text-right' variant="outline"><Pen /></Button>
+          <Button onClick={()=>setOpen(true)} className='text-right' variant="outline"><Pen /></Button>
         </div>
         <div className='my-5'>
           <div className='flex items-center gap-3 my-2' >
@@ -60,6 +63,7 @@ const Profile = () => {
               <AppliedJobTable/>
 
           </div>
+          <UpdateProfileDialog open={open} setOpen={setOpen}/>
           <Footer/>
     </div>
   )
