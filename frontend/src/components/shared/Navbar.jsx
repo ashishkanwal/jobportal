@@ -11,9 +11,18 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { LogOut, User2 } from "lucide-react";
 import { useSelector } from "react-redux";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 function Navbar() {
   const {user}=useSelector(store=>store.auth);
+  const logoutHandler = async () =>{
+    try {
+      const res = await axios.get(`${USER_API_END_POINT}/logout`,{withCredentials:true})
+    } catch (error) {
+       console.log(error);
+       toast.error(error.response.data.message);
+    }
+  }
   return (
     <>
       <div className="bg-gray-200">
@@ -88,7 +97,7 @@ function Navbar() {
                       </div>
                       <div className="flex w-fit items-center gap-2 cursor-pointer">
                         <LogOut />
-                        <Button variant="link">Logout</Button>
+                        <Button onClick={logoutHandler} variant="link">Logout</Button>
                       </div>
                     </div>
                   </PopoverContent>
