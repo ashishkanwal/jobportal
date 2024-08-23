@@ -26,8 +26,8 @@ const Profile = () => {
               <AvatarImage src="https://github.com/shadcn.png"alt="@shadcn"  />
             </Avatar>
             <div>
-              <h1 className='font-medium text-xl'>{user.fullname}</h1>
-              <p className='text-sm text-gray-500'>FullStack Web Developer</p>
+              <h1 className='font-medium text-xl'>{user?.fullname}</h1>
+              <p className='text-sm text-gray-500'>{user?.profile.bio}</p>
             </div>
           </div>
           <Button onClick={()=>setOpen(true)} className='text-right' variant="outline"><Pen /></Button>
@@ -35,17 +35,17 @@ const Profile = () => {
         <div className='my-5'>
           <div className='flex items-center gap-3 my-2' >
             <Mail/>
-            <span>{user.email}</span> </div>
+            <span>{user?.email}</span> </div>
              
              <div className='flex items-center gap-3 my-2'> <Contact/>
-            <span>+91 {user.phoneNumber}</span> 
+            <span>+91 {user?.phoneNumber}</span> 
             </div>
         </div>
         <div className='my-5'>
           <h1>Skills</h1>
           <div className="flex items-center gap-1 my-2">
           {
-            skills.length!==0?skills.map((item,index)=><Badge className='py-2 px-2 rounded-md' key={index}>{item}</Badge>):<span>NA</span>
+            user?.profile?.skills.length!==0?user?.profile?.skills.map((item,index)=><Badge className='py-2 px-2 rounded-md' key={index}>{item}</Badge>):<span>NA</span>
           }
           </div>
         </div>

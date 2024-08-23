@@ -24,7 +24,10 @@ const userSchema = new mongoose.Schema({
         required:true
     },
     profile:{
-        bio:{type:String},
+        bio: {
+            type: String,
+            default: ""
+        },
         skills:[{type:String}],
         resume:{type:String}, // URL to resume file
         resumeOriginalName:{type:String},
