@@ -80,7 +80,7 @@ function Navbar() {
                   <PopoverTrigger asChild>
                     <Avatar className="cursor-pointer">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src={user?.profile?.profilePhoto}
                         alt="@shadcn"
                       />
                     </Avatar>
@@ -89,7 +89,7 @@ function Navbar() {
                     <div className="flex gap-4 space-y-2">
                       <Avatar className="cursor-pointer">
                         <AvatarImage
-                          src="https://github.com/shadcn.png"
+                          src={user?.profile?.profilePhoto}
                           alt="@shadcn"
                         />
                       </Avatar>
