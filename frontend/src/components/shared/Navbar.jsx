@@ -13,11 +13,13 @@ import { LogOut, User2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_API_END_POINT } from "@/utils/constant";
 import { setUser } from "@/redux/authSlice";
+import { changeMode } from "@/redux/modeSlice";
 import { toast } from "sonner";
 import axios from "axios";
 
 function Navbar() {
   const {user}=useSelector(store=>store.auth);
+  const { light} = useSelector(store => store.mode); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = async () =>{
@@ -33,13 +35,19 @@ function Navbar() {
        toast.error(error.response.data.message);
     }
   }
+  const darkMode=()=>{
+    dispatch(changeMode(false));
+  }
+  const lightMode=()=>{
+    dispatch(changeMode(true));
+  }
   return (
     <>
-      <div className="bg-gray-200">
+      <div className={`${light?'bg-gray-200':'bg-zinc-800 '}`}>
         <div className="flex items-center justify-between mx-auto max-w-6xl h-16">
           <div className="flex gap-5 h-full items-center">
-            <Link to="/" className="text-2xl font-bold cursor-pointer">
-              Jobs<span className="text-blue-500">Seek</span>
+            <Link to="/" className={`${light?'text-black':'text-white'} text-2xl font-bold cursor-pointer`}>
+              Job<span className="text-blue-500">Seek</span>
             </Link>
             <div className="hidden sm:block">
               <span className="loader cursor-pointer"></span>
@@ -47,13 +55,13 @@ function Navbar() {
           </div>
           <div className="flex items-center gap-12">
             <ul className="lists relative  font-medium items-center gap-5 cursor-pointer lg:flex hidden">
-              <li className="item relative text-gray-500 hover:text-gray-800">
+              <li className={`${light?'item relative text-gray-500 hover:text-gray-800':'item relative text-white'}`}>
                 <Link to="/">Home</Link>
               </li>
-              <li className="item relative text-gray-500 hover:text-gray-800">
+              <li   className={`${light?'item relative text-gray-500 hover:text-gray-800':'item relative text-white'}`}>
                 <Link to="/jobs">Jobs</Link>
               </li>
-              <li className="item relative text-gray-500 hover:text-gray-800">
+              <li  className={`${light?'item relative text-gray-500 hover:text-gray-800':'item relative text-white'}`}>
                 <Link to="/browse">Browse</Link>
               </li>
             </ul>
@@ -116,14 +124,13 @@ function Navbar() {
               <Popover>
                 <PopoverTrigger asChild>
                   <Avatar className="cursor-pointer  flex items-center justify-center">
-                    <IoSunnyOutline className="text-2xl" />
+                    <IoSunnyOutline className={`${light?'text-black':'text-white'} text-2xl`} />
                   </Avatar>
                 </PopoverTrigger>
                 <PopoverContent className=" w-32 outline-none bg-gray-100 shadow-lg shadow-indigo-500/40 rounded-md px-2 py-2">
                   <div className="flex flex-col gap-1 px-2 text-sm cursor-pointer">
-                    <h3 className="text-start text-sm">Dark</h3>
-                    <h3 className="text-start text-sm">Light</h3>
-                    <h3 className="text-start text-sm">Default</h3>
+                    <h3 onClick={darkMode} className="text-start text-sm">Dark</h3>
+                    <h3 onClick={lightMode} className="text-start text-sm">Light</h3>
                   </div>
                 </PopoverContent>
               </Popover>

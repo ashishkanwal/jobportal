@@ -1,15 +1,18 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
+import {  useSelector } from 'react-redux';
 
 const HeroSection = () => {
+  const { light} = useSelector(store => store.mode); 
   return (
-    <div className="text-center bg-gray-100 h-5/6">
+   
+    <div className={` text-center  h-5/6 ${light?'bg-gray-100':'bg-zinc-700'}`}>
       <div className="flex flex-col gap-5 my-10">
-        <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-pink-500 font-medium">
+        <span className={`mx-auto px-4 py-2 rounded-full ${light?'bg-gray-100 text-pink-500':'bg-gray-800 text-green-500'}  font-medium`}>
           Leading the Way in Job Search Excellence
         </span>
-        <h1 className="text-5xl font-bold ">
+        <h1 className={`text-5xl ${light?'':'text-gray-500'} font-bold `}>
           Seek, Connect & Achieve <br /> Your Career{" "}
           <span className="text-blue-500">Aspirations</span>
         </h1>

@@ -6,9 +6,11 @@ import LatestJobs from "./LatestJobs";
 import TopCompanies from "./TopCompanies";
 import Footer from "./Footer";
 import './home.css';
-import { FaAnglesUp } from "react-icons/fa6";
+import { FaAnglesUp } from "react-icons/fa6";import { changeMode } from "@/redux/modeSlice";
+import {  useSelector } from 'react-redux';
 
 function Home() {
+  const { light} = useSelector(store => store.mode); 
   // const [loader, setLoader] = useState(true);
   const loader=false;
   // useEffect(() => {
@@ -53,7 +55,7 @@ function Home() {
           </div>
         </div>
       ) : (
-        <div className="relative bg-gray-100">
+        <div className={`relative ${light?'bg-gray-100':'bg-zinc-700'}`}>
           <div id="navbar">
             <Navbar />
           </div>
