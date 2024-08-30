@@ -18,35 +18,35 @@ import { toast } from "sonner";
 import axios from "axios";
 
 function Navbar() {
-  const {user}=useSelector(store=>store.auth);
-  const { light} = useSelector(store => store.mode); 
+  const { user } = useSelector(store => store.auth);
+  const { light } = useSelector(store => store.mode);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const logoutHandler = async () =>{
+  const logoutHandler = async () => {
     try {
-      const res = await axios.get(`${USER_API_END_POINT}/logout`,{withCredentials:true});
-      if(res.data.success){
-          dispatch(setUser(null));
-          navigate("/");
-          toast.success(res.data.message);
+      const res = await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true });
+      if (res.data.success) {
+        dispatch(setUser(null));
+        navigate("/");
+        toast.success(res.data.message);
       }
     } catch (error) {
-       console.log(error);
-       toast.error(error.response.data.message);
+      console.log(error);
+      toast.error(error.response.data.message);
     }
   }
-  const darkMode=()=>{
+  const darkMode = () => {
     dispatch(changeMode(false));
   }
-  const lightMode=()=>{
+  const lightMode = () => {
     dispatch(changeMode(true));
   }
   return (
     <>
-      <div className={`${light?'bg-gray-200':'bg-zinc-800 '}`}>
+      <div className={`${light ? 'bg-gray-200' : 'bg-zinc-800 '}`}>
         <div className="flex items-center justify-between mx-auto max-w-6xl h-16">
           <div className="flex gap-5 h-full items-center">
-            <Link to="/" className={`${light?'text-black':'text-white'} text-2xl font-bold cursor-pointer`}>
+            <Link to="/" className={`${light ? 'text-black' : 'text-white'} text-2xl font-bold cursor-pointer`}>
               Job<span className="text-blue-500">Seek</span>
             </Link>
             <div className="hidden sm:block">
@@ -54,16 +54,23 @@ function Navbar() {
             </div>
           </div>
           <div className="flex items-center gap-12">
-            <ul className="lists relative  font-medium items-center gap-5 cursor-pointer lg:flex hidden">
-              <li className={`${light?'item relative text-gray-500 hover:text-gray-800':'item relative text-white'}`}>
-                <Link to="/">Home</Link>
-              </li>
-              <li   className={`${light?'item relative text-gray-500 hover:text-gray-800':'item relative text-white'}`}>
-                <Link to="/jobs">Jobs</Link>
-              </li>
-              <li  className={`${light?'item relative text-gray-500 hover:text-gray-800':'item relative text-white'}`}>
-                <Link to="/browse">Browse</Link>
-              </li>
+            <ul className='flex font-medium items-center gap-5'>
+              {
+                user && user.role === 'recruiter' ? (
+                  <>
+                    <li><Link to="/admin/companies">Companies</Link></li>
+                    <li><Link to="/admin/jobs">Jobs</Link></li>
+                  </>
+                ) : (
+                  <>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/jobs">Jobs</Link></li>
+                    <li><Link to="/browse">Browse</Link></li>
+                  </>
+                )
+              }
+
+
             </ul>
 
             <div className="flex gap-3">
@@ -109,10 +116,15 @@ function Navbar() {
                       </div>
                     </div>
                     <div className="flex flex-col my-2  text-gray-600">
-                      <div className="flex w-fit items-center gap-2 cursor-pointer">
-                        <User2 />
-                        <Button variant="link"><Link to="/profile">View Profile</Link></Button>
-                      </div>
+
+                      {
+                        user && user.role === 'student' && (
+                          <div className='flex w-fit items-center gap-2 cursor-pointer'>
+                            <User2 />
+                            <Button variant="link"> <Link to="/profile">View Profile</Link></Button>
+                          </div>
+                        )
+                      }
                       <div className="flex w-fit items-center gap-2 cursor-pointer">
                         <LogOut />
                         <Button onClick={logoutHandler} variant="link">Logout</Button>
@@ -124,7 +136,7 @@ function Navbar() {
               <Popover>
                 <PopoverTrigger asChild>
                   <Avatar className="cursor-pointer  flex items-center justify-center">
-                    <IoSunnyOutline className={`${light?'text-black':'text-white'} text-2xl`} />
+                    <IoSunnyOutline className={`${light ? 'text-black' : 'text-white'} text-2xl`} />
                   </Avatar>
                 </PopoverTrigger>
                 <PopoverContent className=" w-32 outline-none bg-gray-100 shadow-lg shadow-indigo-500/40 rounded-md px-2 py-2">
