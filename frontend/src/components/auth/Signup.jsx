@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../shared/Navbar";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
@@ -24,7 +24,7 @@ function Signup() {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((store) => store.auth);
+  const { loading,user } = useSelector((store) => store.auth);
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -74,6 +74,11 @@ function Signup() {
       dispatch(setLoading(false));
     }
   };
+  useEffect(()=>{
+    if(user){
+        navigate("/");
+    }
+},[])
   return (
     <div>
       <Navbar />

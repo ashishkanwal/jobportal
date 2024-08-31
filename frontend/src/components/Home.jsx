@@ -8,30 +8,13 @@ import Footer from "./Footer";
 import './home.css';
 import { FaAnglesUp } from "react-icons/fa6";import { changeMode } from "@/redux/modeSlice";
 import {  useSelector } from 'react-redux';
+import useGetAllJobs from "@/hooks/useGetAllJobs";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  useGetAllJobs();
   const { light} = useSelector(store => store.mode); 
-  // const [loader, setLoader] = useState(true);
-  const loader=false;
-  // useEffect(() => {
-  //   const hasLoaded = sessionStorage.getItem("hasLoaded");
-
-  //   if (!hasLoaded) {
-  //     document.body.style.overflow = "hidden";
-  //     const timer = setTimeout(() => {
-  //       setLoader(false);
-  //       document.body.style.overflow = "auto";
-  //       sessionStorage.setItem("hasLoaded", "true");
-  //     }, 1000);
-
-  //     return () => {
-  //       clearTimeout(timer);
-  //       document.body.style.overflow = "auto";
-  //     };
-  //   } else {
-  //     setLoader(false);
-  //   }
-  // }, []);
+  const { user} = useSelector(store => store.auth); 
 
   const scrollToHero = () => {
     const heroElement = document.getElementById("navbar");
@@ -39,22 +22,15 @@ function Home() {
       heroElement.scrollIntoView({ behavior: "smooth" });
     }
   };
-
+  const navigate= useNavigate();
+  useEffect(()=>{
+      if(user?.role==='recruiter'){
+          navigate("/admin/companies");
+      }
+  },[]);
   return (
     <div className="relative min-h-screen">
-      {loader ? (
-        <div className="bg-white flex items-center justify-center absolute top-0 left-0 w-full h-full z-50">
-          <div id="page">
-            <div id="container">
-              <div id="ring"></div>
-              <div id="ring"></div>
-              <div id="ring"></div>
-              <div id="ring"></div>
-              <div id="h3">Jobs....</div>
-            </div>
-          </div>
-        </div>
-      ) : (
+    
         <div className={`relative ${light?'bg-gray-100':'bg-zinc-700'}`}>
           <div id="navbar">
             <Navbar />
@@ -70,9 +46,9 @@ function Home() {
           </div>
           <Footer />
         </div>
-      )}
+    
     </div>
-  );
+  )
 }
 
 export default Home;

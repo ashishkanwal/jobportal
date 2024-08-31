@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
@@ -24,7 +24,7 @@ function Login() {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((store) => store.auth);
+  const { loading,user } = useSelector((store) => store.auth);
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -70,6 +70,11 @@ function Login() {
       })
     }
   };
+  useEffect(()=>{
+    if(user){
+        navigate("/");
+    }
+},[])
   return (
     <div>
       <Navbar />

@@ -14,7 +14,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 import companySlice from "./companySlice";
 import applicationSlice from "./applicationSlice";
-import { changeMode } from "./modeSlice";
+import changeMode  from "./modeSlice";
 
 const persistConfig = {
     key: 'root',

@@ -53,7 +53,7 @@ function Navbar() {
               <span className="loader cursor-pointer"></span>
             </div>
           </div>
-          <div className="flex items-center gap-12">
+          <div className="flex  items-center gap-12">
             <ul className='flex font-medium items-center gap-5'>
               {
                 user && user.role === 'recruiter' ? (
@@ -63,9 +63,9 @@ function Navbar() {
                   </>
                 ) : (
                   <>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/jobs">Jobs</Link></li>
-                    <li><Link to="/browse">Browse</Link></li>
+                    <li><Link className="hover:text-gray-500" to="/">Home</Link></li>
+                    <li><Link className="hover:text-gray-500" to="/jobs">Jobs</Link></li>
+                    <li><Link className="hover:text-gray-500" to="/browse">Browse</Link></li>
                   </>
                 )
               }
