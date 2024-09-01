@@ -7,9 +7,9 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import "./navbar.css";
-import { IoSunnyOutline } from "react-icons/io5";
+import { IoNotificationsCircle, IoSunnyOutline } from "react-icons/io5";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, User2 } from "lucide-react";
+import { LogOut, User2,LucideSave, Save } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_API_END_POINT } from "@/utils/constant";
 import { setUser } from "@/redux/authSlice";
@@ -35,12 +35,10 @@ function Navbar() {
       toast.error(error.response.data.message);
     }
   }
-  const darkMode = () => {
-    dispatch(changeMode(false));
+  const letsChange = () => {
+    dispatch(changeMode(!light));
   }
-  const lightMode = () => {
-    dispatch(changeMode(true));
-  }
+  
   return (
     <>
       <div className={`${light ? 'bg-gray-200' : 'bg-zinc-800 '}`}>
@@ -91,16 +89,16 @@ function Navbar() {
                   </Link>
                 </div>
               ) : (
-                <Popover>
+                <Popover >
                   <PopoverTrigger asChild>
-                    <Avatar className="cursor-pointer">
+                    <Avatar className="cursor-pointer ">
                       <AvatarImage
                         src={user?.profile?.profilePhoto}
                         alt="@shadcn"
                       />
                     </Avatar>
                   </PopoverTrigger>
-                  <PopoverContent className=" w-72 outline-none bg-gray-100 shadow-lg shadow-indigo-500/40 rounded-md px-2 py-2">
+                  <PopoverContent className="z-20 w-72 outline-none bg-gray-100 shadow-lg shadow-indigo-500/40 rounded-md px-2 py-2">
                     <div className="flex gap-4 space-y-2">
                       <Avatar className="cursor-pointer">
                         <AvatarImage
@@ -111,7 +109,7 @@ function Navbar() {
                       <div>
                         <h4 className="font-medium">{user.fullname}</h4>
                         <p className="text-sm text-muted-foreground">
-                          Junior Scientist at ISRO.
+                          {user?.profile?.bio}
                         </p>
                       </div>
                     </div>
@@ -119,10 +117,17 @@ function Navbar() {
 
                       {
                         user && user.role === 'student' && (
+                          <>
                           <div className='flex w-fit items-center gap-2 cursor-pointer'>
                             <User2 />
                             <Button variant="link"> <Link to="/profile">View Profile</Link></Button>
                           </div>
+                          <div className='flex w-fit items-center gap-2 cursor-pointer'>
+                            <Save/>
+                            <Button variant="link"> <Link to="/saved">Saved Jobs</Link></Button>
+                          </div>
+                          
+                          </>
                         )
                       }
                       <div className="flex w-fit items-center gap-2 cursor-pointer">
@@ -133,19 +138,18 @@ function Navbar() {
                   </PopoverContent>
                 </Popover>
               )}
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Avatar className="cursor-pointer  flex items-center justify-center">
-                    <IoSunnyOutline className={`${light ? 'text-black' : 'text-white'} text-2xl`} />
-                  </Avatar>
-                </PopoverTrigger>
-                <PopoverContent className=" w-32 outline-none bg-gray-100 shadow-lg shadow-indigo-500/40 rounded-md px-2 py-2">
-                  <div className="flex flex-col gap-1 px-2 text-sm cursor-pointer">
-                    <h3 onClick={darkMode} className="text-start text-sm">Dark</h3>
-                    <h3 onClick={lightMode} className="text-start text-sm">Light</h3>
-                  </div>
-                </PopoverContent>
-              </Popover>
+           
+               
+                    <div className="flex items-center justify-center cursor-pointer">
+                    <IoSunnyOutline onClick={letsChange} className={`${light ? 'text-black' : 'text-white'} text-2xl`} />
+                    </div>
+                
+               
+             {
+              user? <div className="flex items-center justify-center text-3xl cursor-pointer">
+              <IoNotificationsCircle/>
+            </div>:''
+             }
             </div>
           </div>
         </div>

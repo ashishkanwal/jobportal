@@ -4,6 +4,7 @@ import FilterCard from './FilterCard'
 import Job from './Job';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import NoJobsAvailable from './NoJobsAvailable';
 
 // const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -27,14 +28,14 @@ const Jobs = () => {
     return (
         <div>
             <Navbar />
-            <div className='max-w-7xl mx-auto mt-5'>
+            <div className='max-w-6xl mx-auto mt-5 border border-gray-300 rounded-md h-[470px]'>
                 <div className='flex gap-5'>
-                    <div className='w-20%'>
+                    <div className='w-[20%] border'>
                         <FilterCard />
                     </div>
                     {
-                        filterJobs.length <= 0 ? <span>Job not found</span> : (
-                            <div className='flex-1 h-[88vh] overflow-y-auto pb-5'>
+                        filterJobs.length <= 0 ? <NoJobsAvailable/> : (
+                            <div className='flex-1 h-[470px] overflow-y-auto pb-5'>
                                 <div className='grid grid-cols-3 gap-4'>
                                     {
                                         filterJobs.map((job) => (

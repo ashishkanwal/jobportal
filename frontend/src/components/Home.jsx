@@ -10,6 +10,7 @@ import { FaAnglesUp } from "react-icons/fa6";import { changeMode } from "@/redux
 import {  useSelector } from 'react-redux';
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { useNavigate } from "react-router-dom";
+import MeetingComponent from "./MeetingComponent";
 
 function Home() {
   useGetAllJobs();
@@ -40,6 +41,7 @@ function Home() {
           </div>
           <CategoryCarousel />
           <TopCompanies />
+          <MeetingComponent/>
           <LatestJobs />
           <div onClick={scrollToHero} className="fixed cursor-pointer bottom-5 right-5 p-3 bg-blue-500 text-white rounded-full">
             <FaAnglesUp />

@@ -7,9 +7,9 @@ const LatestJobCards = ({job}) => {
   return (
     <div onClick={()=> navigate(`/description/${job._id}`)} className='p-5  rounded-md shadow-xl bg-white border border-gray-100 cursor-pointer'>
         <div className=''>
-        <div className='mb-4 w-full flex justify-center'><img className='h-full w-20' src="https://imgs.search.brave.com/8IpOqcqNRXc-08en11EmP8ryL9KNyg2xsx-Ju1tUkb0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDE5Lzc2/Ni8yNDAvbm9uXzJ4/L2FtYXpvbi1sb2dv/LWFtYXpvbi1pY29u/LXRyYW5zcGFyZW50/LWZyZWUtcG5nLnBu/Zw" alt="not found" /></div>
+        <div className='mb-4 w-full flex justify-center'><img className='h-full w-20' src={`${job?.company?.logo}`}alt="not found" /></div>
         <h1 className='font-medium text-lg '>{job?.company?.name}</h1>
-        <p className='text-sm text-gray-500'>India</p>
+        <p className='text-sm text-gray-500'>{job?.company?.location}</p>
         </div>
         <div>
             <h1 className='font-bold text-lg my-2'>{job?.title}</h1>
