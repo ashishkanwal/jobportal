@@ -63,9 +63,9 @@ function Navbar() {
                   </>
                 ) : (
                   <>
-                    <li><Link className="hover:text-gray-500" to="/">Home</Link></li>
-                    <li><Link className="hover:text-gray-500" to="/jobs">Jobs</Link></li>
-                    <li><Link className="hover:text-gray-500" to="/browse">Browse</Link></li>
+                    <li><Link className={`${light?'hover:text-gray-500':'text-white'}`} to="/">Home</Link></li>
+                    <li><Link className={`${light?'hover:text-gray-500':'text-white'}`} to="/jobs">Jobs</Link></li>
+                    <li><Link className={`${light?'hover:text-gray-500':'text-white'}`} to="/browse">Browse</Link></li>
                   </>
                 )
               }
@@ -148,7 +148,7 @@ function Navbar() {
                 
                
              {
-              user? <div onClick={()=>setBell(!bell)} className="hidden relative sm:flex  items-center justify-center text-3xl cursor-pointer">
+              user && user.role === 'student'? <div onClick={()=>setBell(!bell)} className="hidden relative sm:flex  items-center justify-center text-3xl cursor-pointer">
               <IoNotificationsCircle/>
               <div className="absolute top-2 right-0 w-3 h-3 bg-red-500 rounded-full text-sm flex items-center justify-center text-white">1</div>
             </div>:''
