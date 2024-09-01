@@ -18,7 +18,7 @@ const HeroSection = () => {
   };
   return (
     <div
-      className={`text-center h-5/6 ${light ? "bg-gray-100" : "bg-zinc-700"}`}
+      className={`text-center h-5/6 ${light ? "bg-[#F9FAF5]" : "bg-zinc-700"}`}
     >
       <div className="relative flex flex-col gap-5 my-8">
         <div className="relative z-10 flex flex-col gap-5 my-10">
@@ -48,7 +48,7 @@ const HeroSection = () => {
             </Button>
           </div>
         </div>
-        <div className="bg-gray-100 absolute top-0 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0">
+        <div className="#F9FAF5 absolute top-0 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0">
           <video
             className="w-full h-auto object-cover bg-white"
             autoPlay

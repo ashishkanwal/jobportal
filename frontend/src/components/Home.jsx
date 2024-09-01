@@ -11,6 +11,7 @@ import {  useSelector } from 'react-redux';
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { useNavigate } from "react-router-dom";
 import MeetingComponent from "./MeetingComponent";
+import SlidingPanel from "./SlidingPanel";
 
 function Home() {
   useGetAllJobs();
@@ -32,7 +33,7 @@ function Home() {
   return (
     <div className="relative min-h-screen">
     
-        <div className={`relative ${light?'bg-gray-100':'bg-zinc-700'}`}>
+        <div className={`relative ${light?'bg-[#F9FAF5]':'bg-zinc-700'}`}>
           <div id="navbar">
             <Navbar />
           </div>

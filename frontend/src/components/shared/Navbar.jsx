@@ -3,7 +3,7 @@ import {
   PopoverTrigger,
   Popover,
 } from "@radix-ui/react-popover";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import "./navbar.css";
@@ -16,10 +16,12 @@ import { setUser } from "@/redux/authSlice";
 import { changeMode } from "@/redux/modeSlice";
 import { toast } from "sonner";
 import axios from "axios";
+import SlidingPanel from "../SlidingPanel";
 
 function Navbar() {
   const { user } = useSelector(store => store.auth);
   const { light } = useSelector(store => store.mode);
+  const [bell,setBell]=useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = async () => {
@@ -146,13 +148,15 @@ function Navbar() {
                 
                
              {
-              user? <div className="flex items-center justify-center text-3xl cursor-pointer">
+              user? <div onClick={()=>setBell(!bell)} className="hidden relative sm:flex  items-center justify-center text-3xl cursor-pointer">
               <IoNotificationsCircle/>
+              <div className="absolute top-2 right-0 w-3 h-3 bg-red-500 rounded-full text-sm flex items-center justify-center text-white">1</div>
             </div>:''
              }
             </div>
           </div>
         </div>
+      <SlidingPanel isbell={bell}/>
       </div>
     </>
   );

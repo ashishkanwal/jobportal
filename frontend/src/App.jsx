@@ -15,6 +15,7 @@ import AdminJobs from './components/admin/AdminJobs'
 import PostJob from './components/admin/PostJob'
 import Applicants from './components/admin/Applicants'
 import ProtectedRoute from './components/admin/ProtectedRoute'
+import ProtectedRoute2 from './components/admin/ProtectedRoute2'
 const approuter = createBrowserRouter([
   {
     path:'/',
@@ -30,15 +31,15 @@ const approuter = createBrowserRouter([
   },
    {
     path:'/jobs',
-    element:<Jobs/>
+    element:<ProtectedRoute2><Jobs/></ProtectedRoute2>
    },
    {
     path: "/description/:id",
-    element: <JobDescription />
+    element: <ProtectedRoute2><JobDescription /></ProtectedRoute2>
   },
   {
     path:'/browse',
-    element:<Browse/>
+    element:<ProtectedRoute2><Browse/></ProtectedRoute2>
   },
   {
     path:'/profile',
