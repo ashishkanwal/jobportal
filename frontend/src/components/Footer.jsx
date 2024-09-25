@@ -1,14 +1,15 @@
 import React from 'react'
 import './footer.css'
 import {  useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 const Footer = () => {
     const { light} = useSelector(store => store.mode); 
 
     return (
         <div className={`${light?'bg-white':'bg-zinc-800 text-white'} max-w-7xl `}>
             <div className={`max-w-6xl mx-auto my-20 ${light?'bg-white':'bg-zinc-800 text-white'} min-h-52 lg:h-52 flex gap-2 py-2 flex-col lg:flex-row`}>
-                <div className=' w-80 text-3xl font-semibold flex flex-col gap-5 items-center lg:items-start'>
-                    <div>
+                <div className='mx-auto w-80 text-xl lg:text-3xl font-semibold flex flex-col gap-5 items-center lg:items-start'>
+                    <div >
                         <span >Job</span><span className='text-blue-500'>Seek</span>
                     </div>
                     <div>
@@ -109,25 +110,25 @@ const Footer = () => {
                 </div>
                 <div className='w-full  lg:flex lg:flex-row  gap-2  lg:px-20 '>
                     <div className=' w-full flex flex-col gap-2 text-center'>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>About us</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Careers</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Employer home</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Sitemap</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Credits</h4>
+                        <Link to="/aboutUs"><h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>About us</h4></Link>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Careers</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Employer home</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Sitemap</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Credits</h4>
                     </div>
                     <div className=' w-full flex flex-col gap-2 text-center'>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Help center</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Summons/Notices</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Gruevances</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Report issue</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Help center</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Summons/Notices</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Gruevances</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Report issue</h4>
 
                     </div>
                     <div className=' w-full flex flex-col gap-2 text-center'>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Privacy Policy</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Terms&Condtions</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Fraud Alert</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Trust & Safety</h4>
-                        <h4 className='text-xl text-gray-500 hover:text-black cursor-pointer'>Feedback</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Privacy Policy</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Terms&Condtions</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Fraud Alert</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Trust & Safety</h4>
+                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Feedback</h4>
                     </div>
                 </div>
             </div>

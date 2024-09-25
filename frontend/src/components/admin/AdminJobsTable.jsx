@@ -5,6 +5,10 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Edit2, Eye, MoreHorizontal } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { MdDelete } from 'react-icons/md'
+import {  JOB_API_END_POINT } from '@/utils/constant'
+import axios from 'axios'
+import { toast } from 'sonner'
 
 const AdminJobsTable = () => { 
     const {allAdminJobs, searchJobByText} = useSelector(store=>store.job);
@@ -23,6 +27,17 @@ const AdminJobsTable = () => {
         });
         setFilterJobs(filteredJobs);
     },[allAdminJobs,searchJobByText])
+    const handleDeleteCompany = async (id) => {
+        try {
+            const res = await axios.delete(`${JOB_API_END_POINT}/delete/${id}`, { withCredentials: true });
+            if (res.data?.success) {
+                toast.success(res.data.message);
+            }
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Failed to delete the company");
+        }
+    };
+    
     return (
         <div>
             <Table>
@@ -54,6 +69,10 @@ const AdminJobsTable = () => {
                                                 <Eye className='w-4'/>
                                                 <span>Applicants</span>
                                             </div>
+                                            <div onClick={()=>handleDeleteCompany(job?._id)} className='flex items-center w-fit gap-2 cursor-pointer mt-2'>
+                                                <MdDelete className=''/>
+                                                <span>Delete</span>
+                                                </div>
                                         </PopoverContent>
                                     </Popover>
                                 </TableCell>

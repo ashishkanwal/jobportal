@@ -16,6 +16,8 @@ import PostJob from './components/admin/PostJob'
 import Applicants from './components/admin/Applicants'
 import ProtectedRoute from './components/admin/ProtectedRoute'
 import ProtectedRoute2 from './components/admin/ProtectedRoute2'
+import AboutUs from './components/Other/AboutUs'
+import SavedJobs from './components/SavedJobs'
 const approuter = createBrowserRouter([
   {
     path:'/',
@@ -28,6 +30,14 @@ const approuter = createBrowserRouter([
   {
     path:'/signup',
     element:<Signup/>
+  },
+  {
+    path:'/aboutUs',
+    element:<AboutUs/>
+  },
+  {
+    path:'/savedjobs',
+    element:<SavedJobs/>
   },
    {
     path:'/jobs',
@@ -73,10 +83,9 @@ const approuter = createBrowserRouter([
 ])
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-   <div>
+   <div >
   <RouterProvider router = {approuter}/>
    </div>
   )

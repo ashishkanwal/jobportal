@@ -1,26 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from './ui/button'
 import { Bookmark } from 'lucide-react'
 import { Avatar, AvatarImage } from './ui/avatar'
 import { Badge } from './ui/badge'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'sonner'
+import { USER_API_END_POINT } from '@/utils/constant'
+import { useSelector } from 'react-redux'
 
 const Job = ({job}) => {
+    const { user } = useSelector(store => store.auth);
     const navigate = useNavigate();
-    // const jobId = "lsekdhjgdsnfvsdkjf";
-
     const daysAgoFunction = (mongodbTime) => {
         const createdAt = new Date(mongodbTime);
         const currentTime = new Date();
         const timeDifference = currentTime - createdAt;
         return Math.floor(timeDifference/(1000*24*60*60));
     }
-    
+    const saveJob = async (jobId) => {
+        try {
+          const res = await axios.get(`${USER_API_END_POINT}/savejob/${jobId}`,{ withCredentials: true });
+          if (res.data.success) {
+            toast.success(res.data.message);
+            
+          }
+        } catch (error) {
+          console.log(error);
+         
+          if (error.response) {
+            toast.error(error.response.data.message);
+          } else {
+            toast.error("An error occurred. Please try again later.");
+          }
+        }
+      };
+      
+      
     return (
-        <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100'>
+        <div className='p-5 rounded-md shadow-xl bg-white border border-gray-300'>
             <div className='flex items-center justify-between'>
                 <p className='text-sm text-gray-500'>{daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}</p>
-                <Button variant="outline" className="rounded-full" size="icon"><Bookmark /></Button>
+                <Button variant="outline" className={`rounded-full`} size="icon"onClick={()=>saveJob(job?._id)}><Bookmark /></Button>
             </div>
 
             <div className='flex items-center gap-2 my-2'>
@@ -46,7 +67,7 @@ const Job = ({job}) => {
             </div>
             <div className='flex items-center gap-4 mt-4'>
                 <Button onClick={()=> navigate(`/description/${job?._id}`)} variant="outline">Details</Button>
-                <Button className="bg-[#7209b7]">Save For Later</Button>
+                <Button className="bg-blue-500">Save For Later</Button>
             </div>
         </div>
     )

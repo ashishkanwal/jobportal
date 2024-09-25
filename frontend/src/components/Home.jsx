@@ -11,7 +11,7 @@ import {  useSelector } from 'react-redux';
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { useNavigate } from "react-router-dom";
 import MeetingComponent from "./MeetingComponent";
-import SlidingPanel from "./SlidingPanel";
+import TopCodingQuesitons from "./TopCodingQuesitons";
 
 function Home() {
   useGetAllJobs();
@@ -30,10 +30,11 @@ function Home() {
           navigate("/admin/companies");
       }
   },[]);
+
   return (
     <div className="relative min-h-screen">
     
-        <div className={`relative ${light?'bg-[#F9FAF5]':'bg-zinc-700'}`}>
+        <div className={`relative ${light?'bg-[#F9FAF5]':'bg-[#030101]'}`}>
           <div id="navbar">
             <Navbar />
           </div>
@@ -47,6 +48,7 @@ function Home() {
           <div onClick={scrollToHero} className="fixed cursor-pointer bottom-5 right-5 p-3 bg-blue-500 text-white rounded-full">
             <FaAnglesUp />
           </div>
+          <TopCodingQuesitons/>
           <Footer />
         </div>
     

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Label } from './ui/label';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSearchedQuery } from '@/redux/jobSlice';
 import './filtercard.css'; // Make sure this file includes the scrollbar styles
 
@@ -31,9 +31,9 @@ const FilterCard = () => {
     useEffect(() => {
         dispatch(setSearchedQuery(selectedValue));
     }, [selectedValue]);
-    
+    const { light } = useSelector((store) => store.mode);
     return (
-        <div className='w-full bg-white p-3 rounded-md h-[470px] overflow-y-auto custom-scrollbar'>
+        <div className={`w-full ${light?'bg-white ':'bg-zinc-800 text-white'} p-3 rounded-md h-[470px] overflow-y-auto custom-scrollbar`}>
             <h1 className='font-bold text-lg'>Filter Jobs</h1>
             <hr className='mt-3' />
             <RadioGroup value={selectedValue} onValueChange={changeHandler}>

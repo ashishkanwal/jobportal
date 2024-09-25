@@ -8,7 +8,7 @@ const AppliedJobTable = () => {
     return (
         <div>
             <Table>
-                <TableCaption>A list of your applied jobs</TableCaption>
+                <TableCaption>{allAppliedJobs.length!==0?'A list of your applied jobs':'You have not applied for any Jobs'}</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead>Date</TableHead>
@@ -19,7 +19,7 @@ const AppliedJobTable = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        allAppliedJobs.length <= 0 ? <span>You haven't applied any job yet.</span> : allAppliedJobs.map((appliedJob) => (
+                         allAppliedJobs.map((appliedJob) => (
                             <TableRow key={appliedJob._id}>
                                 <TableCell>{appliedJob?.createdAt?.split("T")[0]}</TableCell>
                                 <TableCell>{appliedJob.job?.title}</TableCell>

@@ -98,3 +98,6 @@ export const updateCompany = async (req, res) => {
         console.log(error);
     }
 }
+
+
+

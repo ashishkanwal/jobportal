@@ -1,13 +1,15 @@
 import React from 'react'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
 import { IoIosArrowForward } from "react-icons/io";
+import { useSelector } from 'react-redux';
 
 const company=["Google","Microsoft","Amazon","Flipkart"]
 const TopCompanies = () => {
+  const { light } = useSelector((store) => store.mode);
   return (
     <div className='max-w-6xl mx-auto my-20'>
         <div className='flex justify-center'>
-        <h1 className='text-4xl font-bold'><span className='text-blue-500'>Top companies</span> Hiring Now</h1>
+        <h1 className='text-4xl font-bold'><span className='text-blue-500'>Top companies</span> <span className={`${light?'text-black':'text-white'}`}>Hiring Now</span></h1>
         </div>
         <div>
       <Carousel className="w-5/6 max-w-6xl mx-auto my-20"> 

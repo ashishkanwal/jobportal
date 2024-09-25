@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSearchedQuery } from "@/redux/jobSlice";
 import video from "../assets/video.mp4";
-import videoDark from "../assets/videoDark.gif";
+import videoDark from "../assets/girl.mp4";
 
 const HeroSection = () => {
   const { light } = useSelector((store) => store.mode);
@@ -20,7 +20,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className={`text-center h-5/6 ${light ? "bg-[#F9FAF5]" : "bg-zinc-700"}`}
+      className={`text-center h-5/6 ${light ? "bg-[#F9FAF5]" : "bg-[#030101]"}`}
     >
       <div className="relative flex flex-col gap-5 my-8">
         <div className="relative z-10 flex flex-col gap-5 my-10">
@@ -68,7 +68,24 @@ const HeroSection = () => {
               Your browser does not support the video tag.
             </video>
           </div>
-        ) :""}
+        ) :(
+          (
+            <div
+              className="absolute top-0 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
+              key="dark"
+            >
+              <video
+                className="w-full h-auto object-cover bg-white"
+                autoPlay
+                muted
+                loop
+              >
+                <source src={videoDark} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )
+        )}
       </div>
     </div>
   );
