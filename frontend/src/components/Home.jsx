@@ -12,6 +12,7 @@ import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { useNavigate } from "react-router-dom";
 import MeetingComponent from "./MeetingComponent";
 import TopCodingQuesitons from "./TopCodingQuesitons";
+import TopInterviewQ from "./TopInterviewQ";
 
 function Home() {
   useGetAllJobs();
@@ -49,6 +50,7 @@ function Home() {
             <FaAnglesUp />
           </div>
           <TopCodingQuesitons/>
+          <TopInterviewQ/>
           <Footer />
         </div>
     

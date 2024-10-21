@@ -48,7 +48,7 @@ function Navbar() {
   return (
     <>
       <div className={`${light ? "bg-gray-200" : "bg-zinc-800"}`}>
-        <div className="flex items-center justify-between mx-auto max-w-6xl h-16">
+        <div className="flex items-center justify-between mx-auto max-w-5xl h-16">
           <div className="flex gap-5 h-full items-center">
             <Link
               to="/"

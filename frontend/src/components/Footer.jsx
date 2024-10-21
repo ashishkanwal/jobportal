@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
         <div className={`${light?'bg-white':'bg-zinc-800 text-white'} max-w-7xl `}>
-            <div className={`max-w-6xl mx-auto my-20 ${light?'bg-white':'bg-zinc-800 text-white'} min-h-52 lg:h-52 flex gap-2 py-2 flex-col lg:flex-row`}>
+            <div className={`max-w-5xl mx-auto my-20 ${light?'bg-white':'bg-zinc-800 text-white'} min-h-52 lg:h-52 flex gap-2 py-2 flex-col lg:flex-row`}>
                 <div className='mx-auto w-80 text-xl lg:text-3xl font-semibold flex flex-col gap-5 items-center lg:items-start'>
                     <div >
                         <span >Job</span><span className='text-blue-500'>Seek</span>

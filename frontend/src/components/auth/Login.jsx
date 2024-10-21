@@ -77,79 +77,94 @@ function Login() {
 },[])
   return (
     <div>
-      <Navbar />
-      <div className="flex sm:items-center sm:justify-center max-w-7xl mx-auto">
-        <form
-          className="w-full sm:w-1/2 border border-gray-200 rounded-md p-4 my-10"
-          onSubmit={submitHandler}
-        >
-          <h1 className="font-bold text-xl mb-5">Login</h1>
-          <div className="my-2">
-            <Label>Email</Label>
-            <Input
-              type="email"
-              value={input.email}
-              name="email"
-              onChange={changeEventHandler}
-              placeholder="Enter your Email Id"
-            />
-          </div>
-          <div className="my-2">
-            <Label>Password</Label>
-            <Input
-              type="password"
-              value={input.password}
-              name="password"
-              onChange={changeEventHandler}
-              placeholder="***********"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <RadioGroup className="flex items-center gap-4 my-5">
-              <div className="flex items-center space-x-2">
-                <Input
-                  type="radio"
-                  name="role"
-                  value="student"
-                  checked={input.role === "student"}
-                  onChange={changeEventHandler}
-                  className="cursor-pointer"
-                />
-                <Label htmlFor="r1">Student</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Input
-                  type="radio"
-                  name="role"
-                  value="recruiter"
-                  checked={input.role === "recruiter"}
-                  onChange={changeEventHandler}
-                  className="cursor-pointer"
-                />
-                <Label htmlFor="r1">Recruiter</Label>
-              </div>
-            </RadioGroup>
-          </div>
-          {loading ? (
-            <Button className="w-full bg-[#6A38C2] my-4">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Please wait
-            </Button>
-          ) : (
-            <Button type="submit" className="w-full bg-blue-500 my-4">
-              Login
-            </Button>
-          )}
-          <span>
-            Don't have an account ?{" "}
-            <Link className="text-blue-600" to="/signup">
-              SignUp
-            </Link>
-          </span>
-        </form>
+  <Navbar />
+  <div className="flex items-center justify-center min-h-screen">
+    <form
+      className="w-full sm:w-1/2 lg:w-1/3 border-2 border-gray-300 rounded-lg shadow-lg p-6 bg-white"
+      onSubmit={submitHandler}
+    >
+      <h1 className="text-2xl font-bold text-center mb-6 border-b-2 border-gray-300 pb-2">
+        Login
+      </h1>
+
+      <div className="mb-4">
+        <Label>Email</Label>
+        <Input
+          type="email"
+          value={input.email}
+          name="email"
+          onChange={changeEventHandler}
+          placeholder="Enter your Email Id"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
       </div>
-      <Footer/>
-    </div>
+
+      <div className="mb-4">
+        <Label>Password</Label>
+        <Input
+          type="password"
+          value={input.password}
+          name="password"
+          onChange={changeEventHandler}
+          placeholder="***********"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div className="mb-6">
+        <RadioGroup className="flex justify-between my-5">
+          <div className="flex items-center">
+            <Input
+              type="radio"
+              name="role"
+              value="student"
+              checked={input.role === "student"}
+              onChange={changeEventHandler}
+              className="cursor-pointer"
+            />
+            <Label className="ml-2">Student</Label>
+          </div>
+          <div className="flex items-center">
+            <Input
+              type="radio"
+              name="role"
+              value="recruiter"
+              checked={input.role === "recruiter"}
+              onChange={changeEventHandler}
+              className="cursor-pointer"
+            />
+            <Label className="ml-2">Recruiter</Label>
+          </div>
+        </RadioGroup>
+      </div>
+
+      {loading ? (
+        <Button className="w-full bg-[#6A38C2] py-3 text-white flex justify-center items-center rounded-md">
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Please wait
+        </Button>
+      ) : (
+        <Button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 py-3 text-white font-semibold rounded-md border border-gray-300"
+        >
+          Login
+        </Button>
+      )}
+
+      <div className="mt-6 text-center">
+        <span>
+          Don't have an account?{" "}
+          <Link className="text-blue-600 hover:underline" to="/signup">
+            Sign Up
+          </Link>
+        </span>
+      </div>
+    </form>
+  </div>
+  <Footer />
+</div>
+
   );
 }
 

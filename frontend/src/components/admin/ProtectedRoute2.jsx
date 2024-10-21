@@ -8,7 +8,8 @@ const ProtectedRoute2 = ({children}) => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(user === null){
+        if(user === null
+        ){
             navigate("/login");
         }
     },[]);

@@ -38,7 +38,7 @@ const CategoryCarousel = () => {
   }
   return (
     <div>
-      <Carousel className="w-3/6 max-w-6xl mx-auto my-20"> {/* Adjust the width as needed */}
+      <Carousel className="w-3/6 max-w-6xl mx-auto my-10"> {/* Adjust the width as needed */}
         <CarouselContent className="flex gap-2"> {/* Adjust gap if needed */}
           {
             category.map((cat, index) => (

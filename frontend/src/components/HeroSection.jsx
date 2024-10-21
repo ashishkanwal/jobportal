@@ -20,7 +20,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className={`text-center h-5/6 ${light ? "bg-[#F9FAF5]" : "bg-[#030101]"}`}
+      className={`text-center h-5/6  ${light ? "bg-[#F9FAF5]" : "bg-[#030101]"}`}
     >
       <div className="relative flex flex-col gap-5 my-8">
         <div className="relative z-10 flex flex-col gap-5 my-10">

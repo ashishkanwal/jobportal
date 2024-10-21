@@ -18,6 +18,12 @@ import ProtectedRoute from './components/admin/ProtectedRoute'
 import ProtectedRoute2 from './components/admin/ProtectedRoute2'
 import AboutUs from './components/Other/AboutUs'
 import SavedJobs from './components/SavedJobs'
+import AdminLogin from './components/auth/AdminLogin'
+import AdminDashboard from './components/owner/AdminDashboard'
+import AdminSignup from './components/auth/AdminSignup'
+import AddCodingQ from './components/owner/AddCodingQ'
+import AddInterviewQ from './components/owner/AddInterviewQ'
+import OwnerProtected from './components/admin/OwnerProtected'
 const approuter = createBrowserRouter([
   {
     path:'/',
@@ -39,6 +45,31 @@ const approuter = createBrowserRouter([
     path:'/savedjobs',
     element:<SavedJobs/>
   },
+
+  //admin
+  {
+    path:'/admin',
+    element:<AdminLogin/>
+  },
+  {
+    path:'/adminSignup',
+    element:<AdminSignup/>
+  },
+  {
+    path:'/admin/dashboard',
+    element:<OwnerProtected><AdminDashboard/></OwnerProtected>
+  },
+  {
+    path:'/admin/codingQuestions',
+    element:<OwnerProtected><AddCodingQ/></OwnerProtected>
+  },
+  {
+    path:'/admin/interviewQuestions',
+    element:<OwnerProtected><AddInterviewQ/></OwnerProtected>
+  },
+
+
+
    {
     path:'/jobs',
     element:<ProtectedRoute2><Jobs/></ProtectedRoute2>
